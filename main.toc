@@ -22,5 +22,7 @@
 \contentsline {subsection}{\numberline {4.2}High Boosting}{7}
 \contentsline {section}{\numberline {5}Image histograms}{7}
 \contentsline {subsection}{\numberline {5.1}Histogram equalization}{7}
+\contentsline {subsection}{\numberline {5.2}Histogram matching}{8}
 \contentsline {section}{\numberline {6}Wavelets}{8}
-\contentsline {section}{\numberline {7}Image compression}{8}
+\contentsline {section}{\numberline {7}Image compression}{9}
+\contentsline {section}{\numberline {8}Old exams}{9}

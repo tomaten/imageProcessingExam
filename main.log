@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.10.7)  24 OCT 2014 14:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.10.7)  26 OCT 2014 17:22
 entering extended mode
 **main.tex
 (C:\Users\tomat_000\Desktop\imageProcessing\main.tex
@@ -174,12 +174,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--24
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--42
+Underfull \hbox (badness 10000) in paragraph at lines 39--45
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--47
+Underfull \hbox (badness 10000) in paragraph at lines 46--50
 
  []
 
@@ -187,48 +187,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--47
 File: img/Noise_salt_and_pepper.png Graphic file (type png)
 
 <use img/Noise_salt_and_pepper.png>
-Package pdftex.def Info: img/Noise_salt_and_pepper.png used on input line 63.
+Package pdftex.def Info: img/Noise_salt_and_pepper.png used on input line 66.
 (pdftex.def)             Requested size: 195.0pt x 260.81972pt.
  [4 <C:/Users/tomat_000/Desktop/imageProcessing/img/Noise_salt_and_pepper.png (
 PNG copy)>] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 104--114
+Underfull \hbox (badness 10000) in paragraph at lines 110--120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--114
+Underfull \hbox (badness 10000) in paragraph at lines 110--120
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 116.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 116.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--130
+Underfull \hbox (badness 10000) in paragraph at lines 131--136
 
  []
 
-[6] [7] [8] (C:\Users\tomat_000\Desktop\imageProcessing\main.aux) ) 
+[6] <img/histogram_equalization.png, id=25, 787.94376pt x 353.32pt>
+File: img/histogram_equalization.png Graphic file (type png)
+
+<use img/histogram_equalization.png>
+Package pdftex.def Info: img/histogram_equalization.png used on input line 175.
+
+(pdftex.def)             Requested size: 195.0pt x 87.43483pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--179
+
+ []
+
+[7] [8 <C:/Users/tomat_000/Desktop/imageProcessing/img/histogram_equalization.p
+ng>] [9] (C:\Users\tomat_000\Desktop\imageProcessing\main.aux) ) 
 Here is how much of TeX's memory you used:
- 1842 strings out of 493921
- 23372 string characters out of 3147270
- 77857 words of memory out of 3000000
- 5138 multiletter control sequences out of 15000+200000
+ 1848 strings out of 493921
+ 23549 string characters out of 3147270
+ 78890 words of memory out of 3000000
+ 5143 multiletter control sequences out of 15000+200000
  12403 words of font info for 48 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,6n,24p,221b,226s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (8 pages, 150539 bytes).
+<C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (9 pages, 167705 bytes).
 PDF statistics:
- 46 PDF objects out of 1000 (max. 8388607)
+ 52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
