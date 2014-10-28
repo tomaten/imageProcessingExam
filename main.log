@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.10.7)  26 OCT 2014 17:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.10.7)  28 OCT 2014 12:08
 entering extended mode
 **main.tex
 (C:\Users\tomat_000\Desktop\imageProcessing\main.tex
@@ -127,39 +127,72 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\colortbl\colortbl.sty"
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen114
+\extrarowheight=\dimen115
+\NC@list=\toks20
+\extratabsurround=\skip46
+\backup@length=\skip47
+)
+\everycr=\toks21
+\minrowclearance=\skip48
+)
+\rownum=\count100
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
 (C:\Users\tomat_000\Desktop\imageProcessing\main.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count100
-\scratchdimen=\dimen114
+\scratchcounter=\count101
+\scratchdimen=\dimen116
 \scratchbox=\box28
-\nofMPsegments=\count101
-\nofMParguments=\count102
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count103
-\MPscratchDim=\dimen115
-\MPnumerator=\count104
-\makeMPintoPDFobject=\count105
-\everyMPtoPDFconversion=\toks21
+\nofMPsegments=\count102
+\nofMParguments=\count103
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count104
+\MPscratchDim=\dimen117
+\MPnumerator=\count105
+\makeMPintoPDFobject=\count106
+\everyMPtoPDFconversion=\toks23
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 11.
+LaTeX Font Info:    Try loading font information for U+msa on input line 12.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 11.
+LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -168,80 +201,96 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 (C:\Users\tomat_000\Desktop\imageProcessing\main.toc)
 \tf@toc=\write3
- [2]
-Underfull \hbox (badness 10000) in paragraph at lines 17--24
+ [2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 18--26
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 39--45
+Underfull \hbox (badness 10000) in paragraph at lines 42--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--50
+Underfull \hbox (badness 10000) in paragraph at lines 49--53
 
  []
 
-[3] <img/Noise_salt_and_pepper.png, id=14, 321.2pt x 429.605pt>
+[4] <img/Noise_salt_and_pepper.png, id=17, 321.2pt x 429.605pt>
 File: img/Noise_salt_and_pepper.png Graphic file (type png)
 
 <use img/Noise_salt_and_pepper.png>
-Package pdftex.def Info: img/Noise_salt_and_pepper.png used on input line 66.
+Package pdftex.def Info: img/Noise_salt_and_pepper.png used on input line 72.
 (pdftex.def)             Requested size: 195.0pt x 260.81972pt.
- [4 <C:/Users/tomat_000/Desktop/imageProcessing/img/Noise_salt_and_pepper.png (
-PNG copy)>] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 110--120
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5] [6 <C:/Users/tomat_000/Desktop/imageProcessing/img/Noise_salt_and_pepper.pn
+g (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 116--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--120
+Underfull \hbox (badness 10000) in paragraph at lines 116--126
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 128.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
-
-Underfull \hbox (badness 10000) in paragraph at lines 131--136
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 128.
+ [7]
+Underfull \hbox (badness 10000) in paragraph at lines 137--142
 
  []
 
-[6] <img/histogram_equalization.png, id=25, 787.94376pt x 353.32pt>
+<img/histogram_equalization.png, id=29, 787.94376pt x 353.32pt>
 File: img/histogram_equalization.png Graphic file (type png)
 
 <use img/histogram_equalization.png>
-Package pdftex.def Info: img/histogram_equalization.png used on input line 175.
+Package pdftex.def Info: img/histogram_equalization.png used on input line 181.
 
 (pdftex.def)             Requested size: 195.0pt x 87.43483pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--179
+Underfull \hbox (badness 10000) in paragraph at lines 165--185
 
  []
 
-[7] [8 <C:/Users/tomat_000/Desktop/imageProcessing/img/histogram_equalization.p
-ng>] [9] (C:\Users\tomat_000\Desktop\imageProcessing\main.aux) ) 
+[8] [9 <C:/Users/tomat_000/Desktop/imageProcessing/img/histogram_equalization.p
+ng>]
+Underfull \hbox (badness 10000) in paragraph at lines 198--216
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--241
+
+ []
+
+[10] [11] (C:\Users\tomat_000\Desktop\imageProcessing\main.aux) ) 
 Here is how much of TeX's memory you used:
- 1848 strings out of 493921
- 23549 string characters out of 3147270
- 78890 words of memory out of 3000000
- 5143 multiletter control sequences out of 15000+200000
+ 2412 strings out of 493921
+ 30007 string characters out of 3147270
+ 93349 words of memory out of 3000000
+ 5693 multiletter control sequences out of 15000+200000
  12403 words of font info for 48 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,24p,221b,226s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (9 pages, 167705 bytes).
+ 41i,11n,35p,249b,240s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb>
+Output written on main.pdf (11 pages, 186958 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

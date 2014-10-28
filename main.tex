@@ -2,6 +2,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
 
 
 \title{Image processing: A quick reference sheet for the exam}
@@ -18,7 +19,8 @@
 	that has been covered in the course, and also provide answers to
 	some common exam questions. The content is shamelessly ripped from
 	various sources, which is indicated at the start of a section
-	or paragraph.\\
+	or paragraph. Feel free to add sections, figures and answers to
+	exams.\\
 	\\	
 	Guide:
 	\begin{description}
@@ -27,6 +29,7 @@
 		\item[[E]] Exam
 		\item[[B]] Course Book
 		\item[[O]] Other
+		\item[None] Missing or anecdotal
 	\end{description}
 	
 %	
@@ -55,6 +58,9 @@
 	would be impossible to determine even what the subject was).
 	
 	\subsection{Various types of noise}
+	
+	\subsubsection{White additive gaussian noise}
+	TODO	
 	
 	\subsubsection{Salt and pepper noise}
 	[W] Salt-and-pepper noise is a form of noise sometimes seen on images. It presents itself as 
@@ -176,9 +182,56 @@
 		\caption{Example of histogram equalization}		
 		\label{fig:histeq}
 	\end{figure}
+	\subsubsection{The idea behind histogram equalization}
+	[L] Our eyes (brain) can see more details if the image histogram is wide and approximately
+	flat, rather than narrow and peaked.
 	
+	\subsubsection{Example: How to equalize a histogram in practice}
+	[E] Assume you have a 2-bit image like this:
+	\begin{equation}		
+	\begin{bmatrix}
+		1 & 1 & 2 & 2 \\
+		2 & 1 & 3 & 1 \\
+		1 & 1 & 0 & 1 \\
+		1 & 2 & 2 & 1
+	\end{bmatrix}
+	\end{equation}
+	\textbf{How do you equalize its histogram?}\\
+	\\
+	\textbf{Answer:} Create a table like table~\ref{tab:histeq}.
+	\begin{table}[h!]
+	\centering
+	\begin{tabular}{lllll}
+		\rowcolor[HTML]{EFEFEF} 
+		Orig. Value & \multicolumn{1}{c}{\cellcolor[HTML]{EFEFEF}Probability} & Cum. prob. & Rounded & New Value \\ \hline
+		0     		& $1/16$                                          		  & $1/16$     & $0/3$   & 0         \\ \hline
+		1     		& $9/16$                                          		  & $10/16$    & $2/3$   & 2         \\ \hline
+		2     		& $5/16$                                          		  & $15/16$    & $3/3$   & 3         \\ \hline
+		3     		& $1/16$                                         		  & $16/16$    & $3/3$   & 3         \\ \hline
+	\end{tabular}
+	\caption{Histogram equalization table}
+	\label{tab:histeq}
+	\end{table}
+	Then simply create the new equalized image by replacing the original values with the new values:
+	\begin{equation}		
+	\begin{bmatrix}
+		2 & 2 & 3 & 3 \\
+		3 & 2 & 3 & 2 \\
+		2 & 2 & 0 & 2 \\
+		2 & 3 & 3 & 2
+	\end{bmatrix}
+	\end{equation}
+	This is the new equalized image. This histogram is poorly equalized due to small number of both
+	bits and pixels.
+	\subsubsection{Histogram equalization of a one-color image}
+	Assume you equalize a histogram of an image of just one colour. As the probability will reach maximum
+	at that gray value, the cumulative and rounded value will as well. Thus all original values will be 
+	replaced with the maximum gray value (white).
 	\subsection{Histogram matching}
-	[W] It is possible to use histogram matching to balance detector responses as a relative detector 
+	[W] Histogram matching is a method in image processing of color adjustment of two images using 
+	the image histograms.\\
+	\\
+	It is possible to use histogram matching to balance detector responses as a relative detector 
 	calibration technique. It can be used to normalize two images, when the images were acquired at 
 	the same local illumination (such as shadows) over the same location, but by different sensors, 
 	atmospheric conditions or global illumination.
