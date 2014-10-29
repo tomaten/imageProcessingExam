@@ -4,7 +4,6 @@
 \usepackage{graphicx}
 \usepackage[table,xcdraw]{xcolor}
 
-
 \title{Image processing: A quick reference sheet for the exam}
 \author{by Tom T. Doodle}
 
@@ -19,8 +18,7 @@
 	that has been covered in the course, and also provide answers to
 	some common exam questions. The content is shamelessly ripped from
 	various sources, which is indicated at the start of a section
-	or paragraph. Feel free to add sections, figures and answers to
-	exams.\\
+	or paragraph.\\
 	\\	
 	Guide:
 	\begin{description}
@@ -59,9 +57,6 @@
 	
 	\subsection{Various types of noise}
 	
-	\subsubsection{White additive gaussian noise}
-	TODO	
-	
 	\subsubsection{Salt and pepper noise}
 	[W] Salt-and-pepper noise is a form of noise sometimes seen on images. It presents itself as 
 	sparsely occurring white and black pixels. An effective noise reduction method for this 
@@ -79,8 +74,13 @@
 	that of the normal distribution, which is also known as the Gaussian distribution. In other
 	words, the values that the noise can take on are Gaussian-distributed.
 	
-	\subsubsection{Additive}
+	\subsubsection{Poissonian noise}
 	TODO
+	
+	\subsubsection{Additive}
+    
+    Additive because it is added to any noise that might be intrinsic to the information system.
+	
 	\subsubsection{Multiplicative}
 	In signal processing, the term multiplicative noise refers to an unwanted random signal that 
 	gets multiplied into some relevant signal during capture, transmission, or other processing.
@@ -133,7 +133,7 @@
     For this reason the median filter is much better at preserving sharp edges than the mean filter. 
 	\end{itemize}
 
-	\subsection{Mean filter}
+	\subsection{Mean/Averaging filter}
 	[O] The idea of mean filtering is simply to replace each pixel value in an image with the 
 	mean (`average') value of its neighbors, including itself. This has the effect of eliminating 
 	pixel values which are unrepresentative of their surroundings.\\
@@ -152,11 +152,37 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	
 \section{Image sharpening}
-	TODO
+	The Basic concept is as follows:\\
+	Sharpened image = Original image - smoothened image.\\
+	You can smoothen an image by applying a lowpass filter on it.
+	
 	\subsection{Edge detection}
-	TODO
+	A lot of different ways. One basic approach for finding edges is by detecting changes in intensity, 
+	which can be accomplished using first or second order derivatives. \\
+	
+	\noindent [W]	There are many methods for edge detection, but most of them can be grouped into two categories, 
+	search-based and zero-crossing based. The search-based methods detect edges by first computing a measure 
+	of edge strength, usually a first-order derivative expression such as the gradient magnitude, and then 
+	searching for local directional maxima of the gradient magnitude using a computed estimate of the local 
+	orientation of the edge, usually the gradient direction. The zero-crossing based methods search for zero
+	crossings in a second-order derivative expression computed from the image in order to find edges, usually 
+	the zero-crossings of the Laplacian or the zero-crossings of a non-linear differential expression. As a
+	pre-processing step to edge detection, a smoothing stage, typically Gaussian smoothing, is almost always applied.\\
+	\\
+    The edge detection methods that have been published mainly differ in the types of smoothing filters that are applied and the way the measures of edge        strength are computed. As many edge detection methods rely on the computation of image gradients, they also differ in the types of filters used for          computing gradient estimates in the x- and y-directions.
+	
 	\subsection{High Boosting}
-	TODO	
+	[B] High-boost filtering is used for sharpening an image $f(x,y)$. It is carried out in several steps, 
+	namely:
+	\begin{itemize}
+	\item Unsharp masking \begin{enumerate}
+	                        \item Blur the original image $\rightarrow \hat f(x,y)$
+	                        \item Subtract the blurred image from the original 
+	                        (yielding a mask) $ \rightarrow g_{\mathrm{mask}}(x,y) = f(x,y) - \hat f(x,y)$
+	                        \item Add the mask to the original $ g(x,y) = f(x,y) + k * g_{\mathrm{mask}}(x,y)$
+	                       \end{enumerate}
+	\item If $ k > 1$ this will yield a high boosted image.
+	\end{itemize}
 %	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	
@@ -182,7 +208,7 @@
 		\caption{Example of histogram equalization}		
 		\label{fig:histeq}
 	\end{figure}
-	\subsubsection{The idea behind histogram equalization}
+		\subsubsection{The idea behind histogram equalization}
 	[L] Our eyes (brain) can see more details if the image histogram is wide and approximately
 	flat, rather than narrow and peaked.
 	
@@ -234,20 +260,275 @@
 	It is possible to use histogram matching to balance detector responses as a relative detector 
 	calibration technique. It can be used to normalize two images, when the images were acquired at 
 	the same local illumination (such as shadows) over the same location, but by different sensors, 
-	atmospheric conditions or global illumination.
+	atmospheric conditions or global illumination.\\
+	
+	\subsubsection{Algorithm}
+	[O] The algorithm is as follows. The cumulative histogram is computed for each dataset, see 
+	figure~\ref{fig:histogram_matching}. For any particular value ($x_i$) in the data to be adjusted 
+	has a cumulative histogram value given 
+	by $G(x_i)$. This in turn is the cumulative distribution value in the reference dataset, namely $H(x_j)$. 
+	The input data value $x_i$ is replaced by $x_j$. \\
+    \\
+    In practice for discrete valued data one does not step through data values but rather creates a 
+    mapping to the output state for each possible input state. In the case of an image this would be a 
+    mapping for each of the 256 different states. 
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.85\textwidth]{img/histmatch.jpg}
+		\caption{Histogram matching diagram}		
+		\label{fig:histogram_matching}
+	\end{figure}
 %	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	
 \section{Wavelets}
-	TODO
+	\subsection{The fundamental Propertis of Wavelets}
+	Wavelets are a multiscale method that can overcome some the difficulties with the Fourier Transform. Their fundamental
+	property is to provide an adaptive time/space-frequency resolution to the the frequency itself [constant relative bandwidth, in the  
+	language of data processing. In other words, this means that small-scale features of the data are analysed with fine resolution in
+	time/space and coarse resolution in frequency, as is natural, and vice versa for large-scale features.
+	 
+	 \subsection{The Wavelet Transform}
+	 TODO Maybe
+	 
+	 \subsection{Basics of Wavelet Applications}
+	 Wavelets can be used for alot of things. Some common use-areas are:
+	    
+	    \subsubsection{Data Compression}
+	    The adaptive time/space-frequency resolution and the non-redundancy of the fast wavelet transform have an iumportant implication: 
+	    given regular data, most information present in the gets concentrated into a few large
+	    wavelet coefficients. In practice, this means that we can set all the
+	    other coefficients to zero and get back data almost identical to the
+	    original ones. This is also the idea behind image compression. The most
+	    important requirement for good compression ability is that the
+	    decomposition wavelet should have many vanishing moments, and the basic
+	    reason is that a wavelet with n vanishing moments is insensitive to
+	    polynomials of degree n-1. 
+	    
+	    \subsection{De-noising}
+	    The compression ability of the fast wavelet transform has a further
+	    importan implication: given noisy data, the underlying regular parts gets
+	    mostly mappen into many small wavelet coefficients, whereas noise is
+	    mostly mappen into many small wavelet coefficients. In practice, this
+	    means that, if we identify a correct threshold. then we can set all small
+	    coefficients to zero and get back data almost decontaminated from noise.
+	    This is the idea behind data denoising.
 %	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \section{Image compression}
-	TODO
+	\begin{description}
+	    \item[Compression ratio] $C = b/L$, where $b$ and $L$ carries the same information, and
+	    $L$ is the compressed data.
+	    \item[Relative data redundancy] $1 - 1/C$
+	    \item[Shannons entropy theorem (maximum compression rate)] $-\sum w_i \log_2 w_i$
+    \end{description}
+    \subsection{Redundancy types}
+    [B]
+        \subsubsection{Coding redundancy}
+            A \emph{code} is a system of symbols (letters, number, bits and the like) used to
+            represent a body of information or set of events. Each piece of information or 
+            event is assigned a sequence of \emph{code symbols}, called a \emph{code word}.
+            The number of symbols in each code word is its \emph{length}. The 8-bit codes that 
+            are used to represent the intensities in most 2-D intensity arrays contain more
+            bits than are needed to represent the intensities.
+        \subsubsection{Spatial and temporal redundancy} 
+            Because of the pixels of most 2-D intensity arrays are correlated spatially (i.e.,
+            each pixel is similar to or dependent on neighboring pixels), information is
+            unnecessarily replicated in the represintations of the correlated pixels. In an
+            video sequence, temporally correlated pixels (i.e., those similar to or dependent
+            on pixels in nearby frames) also duplicate information.
+        \subsubsection{Irrelevant information} 
+            Most 2-D intensity arrays contain information that is ignored by the human visual
+            system and/or extreneous to the intended use of the image. It is redundant in the
+            sense that it is not used.
+    \subsection{Huffman coding}
+        [W] See figure~\ref{fig:huffman}. A loss-less coding redundancy compression method.
+        \begin{figure}[h!]
+        \centering
+        \includegraphics[width = 0.6\textwidth]{img/huffman_encoding.PNG}
+        \caption{Huffman coding}
+        \label{fig:huffman}
+        \end{figure}
+        \begin{equation}
+            L = \sum_{i=1}^n w_i \cdot \mathrm{length}(c_i)
+        \end{equation}
+    \subsection{Run-length coding}
+    Run-length encoding (RLE) is a very simple form of data compression in which runs of data (that
+    is, sequences in which the same data value occurs in many consecutive data elements) are stored
+    as a single data value and count, rather than as the original run. This is most useful on data 
+    that contains many such runs. \\
+    \\
+    \textbf{Example:}\\
+    The black and white image (displayed here as horizontal raster scanned):
+    \begin{verbatim}
+        WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW
+    \end{verbatim}
+    can be expressed as:
+    \begin{verbatim}
+        12W1B12W3B24W1B14W
+    \end{verbatim}
+        This is to be interpreted as twelve Ws, one B, twelve Ws, three Bs, etc.
+        The run-length code represents the original 67 bit-values in only 18.    
 %	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	
 \section{Old exams}
-	TODO	
+	\subsection{2014/2013}
+	\subsubsection*{1a)}
+	
+	    Sharpened image = Original image - smoothened image.\\
+	    You can smoothen an image by taking a lowpass filter. 
+	
+	\subsubsection*{1b)}
+	
+	    Amplify high frequency components while keeping the low frequency intact. This will enhance images and remove some blurry parts. \\
+	    High boost image = Original image + Sharpened image. 
+	    \\By 1a).
+	
+	\subsubsection*{1c)}
+	
+	    For instance use: The Laplacian of gaussian method. Works by looking for zero-crossings after filtering the image with the Laplacian of a gaussian filter
+	
+	\subsubsection*{1d)}
+	
+	    Yes. By amplifying high frequencies we can sharpen an image and by looking at high frequencies we can find edges.
+	
+	\subsubsection*{1e)}
+	
+	    Finns i facit.
+	    
+	\subsubsection*{2a)}
+	
+	    TODO
+	    
+	\subsubsection*{2b)}
+	    Denoising: W3 because it looks like the reconstruction wavelet, behaves more than W2 like an orthogonal 
+	    and has more vannishing moments than the orthogonal.\\
+	    \\
+	    Wavelets are good for additive white gaussian noise so yes.\\
+	    \\
+	    If not Gaussian, preprocess and map into white-gaussian.\\
+	    \\
+	    For salt and pepper noise you can not use wavelets, need to use a median filter.
+	    
+\subsection{2012/2013}
+
+    \subsubsection*{1a)}
+    
+        A basic noise model used to mimic the effect of many random processes that ocure in nature. \\
+        Additive - Because it is added to any noise that might be intrinsic to the information system.\\
+        White - Has uniform emissions at all freq in the visible spectrum.\\
+        Gaussian - Because it has a normal distribution in the time domain with an average time domain value of zero.\\
+        Can be removed using (adaptive) median filters or linear filtering.
+        
+    \subsubsection*{1b)}
+    
+        Poissionian Noise is a type of electrical noise originating from the discrete nature of electric charge. 
+        Gaussian noise is continious were as poissonian noise is discrete. Poissonian noise can occure in TV-streams. \\
+        To remove Poissonian noise, maybe use an averaging filter because the noise is statistic.
+        
+    \subsubsection*{1c}
+    
+        By denoising we remove information from the image, which means we're compressing it.
+        
+    \subsubsection*{}
+        
+        Exists facit for the rest
+        
+\subsection{2011/2012}
+
+    \subsubsection*{1a)}
+    
+        It can be used to change contrast. By taking the histogram and removing peeks, and stretch the rest, we get higher contrast.
+        (stretching the gray scale)
+    
+     \subsubsection*{1b)}
+     
+        Can be used for color adjustment and gray scale adjustment (not just by histogram equalize).
+        
+    \subsubsection*{1c)}
+    
+        Low-pass filter passes signals under a certain cut-off frequencies. All freq above is dampened but not necessary removed. 
+        Ideal filter completely eliminates all above cut-off freq. Can be used against wide-random noise. (maybe same thing as additive
+        gaussian noise?)\\
+        \\
+        Cons: Ideal filter will remove all high freqs, which means that all edges will be smoothened.\\
+        \\
+        Pros: Good if you don't have many distinct edges, because it can remove a lot of high freqs. 
+        Not used so much in image processing but rather in aduio processing, where you want to completly 
+        remove certain freqs (above a certain freq).
+        
+    \subsubsection*{1d)}
+    
+        Works pretty much the same way but not ideal so wont remove all freqs above cut-off freq.
+        
+    \subsubsection*{}
+    
+        Resten har facit.
+        
+\subsection{2010/2011}
+
+    \subsubsection*{1a)}
+        
+        Averaging filter works as a mean-filter.
+        
+    \subsubsection*{1b)}
+        
+        It will work better with a median filter.
+        
+    \subsubsection*{3c)}
+
+        Helps to remove blur. Optimal means optimal in the sense of MMSE, minimum mean square error.
+        
+        TODO
+
+    \subsubsection*{}
+    
+        Resten har facit. 
+        
+\subsection{2009/2010}
+
+    \subsubsection*{1a)}
+    
+        Trivialt ordbajs.
+    
+    \subsubsection*{1b)}
+    
+        When enhancing the lower frequencies or dampening the high frequencies. Threseholding is the simplest
+        method of image segmentation. Can be used to create binary images from a gray scale image. 
+        All pixel values (A) to the left of the centered line (B) will be white, and all to the right (C), will be black.
+        \begin{verbatim}
+                 ______________
+                |
+                |
+  ______________|
+    A     <     B     <     C
+            
+        \end{verbatim}
+
+    \subsubsection*{1cde)}
+    
+        Finns facit. Det som inte finns facit på skulle han inte ta med.
+        
+    \subsubsection*{2c)}
+    
+        FWT (Fast Wavelet Transform)\\
+        \textbf{Pros:} Good ability to compress stationary signals, able to support some interesting noneucledian similarity measures.\\ 
+        \textbf{Cons:} Signals must have length: $2^{INT}$. Can't support weighted distance measures.\\
+        \\
+        BDCT (Block discrete cosine transform)\\
+        Better at comparisons. The difference from FWT is that it takes real cosine functions instead of a set of harmonicaly related complex
+        exponential functions like the DFT. Specially used for lossy data compression because of it's strong energy compaction property. 
+        Good and bad.\\
+        \\
+        DFT (Discrete Fourier Transform)\\
+        Good for same things as BDCT, namely Lossy image compression.\\
+        \textbf{Pros:} Good ability to compress most natural signals. Fast $\mathcal{O}(n \cdot \log(n))$. 
+        Weekly abeled to support timewarped queries. \\
+        \textbf{Cons:} Difficult to deal with sequences of different lengths. Can't support weighted distance measures.
+        
+\subsection*{2008/2009}
+
+    Finns facit på allt.
 \end{document}
