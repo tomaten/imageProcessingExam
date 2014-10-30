@@ -311,6 +311,13 @@
 			\textit{Regularity} also affects the frequency localization. In fact, the Fourier transform of a wavelet that is continuous together with its first n − 1 derivatives decays as k−(n+1) towards infinity.\\
 			\textit{(Bi-)Orthogonality} The orthogonality property concerns the set of wavelets defining the transform, that is the set of scaled and trans- lated versions of the basic wavelet. This means that such wavelets form an orthogonal basis. The alternative bi-orthogonality property means that the decomposition and reconstruction wavelets form two distinct bases, which are mutually orthogonal. Note that (bi-)orthogonality is intimately related to the non-redundancy of the transform.
 
+			\subsubsection{Difference of  orthogonal, (bi-Orthongonal and quasi orthogonal}
+			TLDR: quasi-orthogonal > orthogonal\\
+			more vanishing moments, larger support, higher regularity and perfect symmetry.\\
+
+			[P04]
+			 The wavelets ‘haar’ and ‘daub 4’ belong to the family of Daubechies wavelets, and are simple (see Daubechies 1992; here we use the same names as in the code). These wavelets are orthogonal; and they have few vanishing moments, small support, low regu- larity and no symmetry (‘haar’ is an exception). The wavelet pairs ‘bior 4.4’ and ‘rbio 6.8’ belong to the family of bi-orthogonal spline wavelets and to its reverse, respectively, and are more advanced (see Daubechies 1992; here we use the same names as in the code). Such wavelet pairs are not only bi-orthogonal but also quasi-orthogonal: for each pair the decomposition and reconstruction wavelets are dis- tinct but similar. In addition, they have more vanishing moments, larger support, higher regularity and perfect symmetry.
+
 	    \subsubsection{Data Compression}
 	    The adaptive time/space-frequency resolution and the non-redundancy of the fast wavelet transform have an iumportant implication: 
 	    given regular data, most information present in the gets concentrated into a few large

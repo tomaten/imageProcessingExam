@@ -33,18 +33,19 @@
 \contentsline {subsection}{\numberline {6.2}The Wavelet Transform}{13}
 \contentsline {subsection}{\numberline {6.3}Basics of Wavelet Applications}{13}
 \contentsline {subsubsection}{\numberline {6.3.1}Waveler properties}{13}
-\contentsline {subsubsection}{\numberline {6.3.2}Data Compression}{14}
-\contentsline {subsection}{\numberline {6.4}De-noising}{14}
-\contentsline {section}{\numberline {7}Image compression}{14}
-\contentsline {subsection}{\numberline {7.1}Redundancy types}{14}
+\contentsline {subsubsection}{\numberline {6.3.2}Difference of orthogonal, (bi-Orthongonal and quasi orthogonal}{14}
+\contentsline {subsubsection}{\numberline {6.3.3}Data Compression}{14}
+\contentsline {subsection}{\numberline {6.4}De-noising}{15}
+\contentsline {section}{\numberline {7}Image compression}{15}
+\contentsline {subsection}{\numberline {7.1}Redundancy types}{15}
 \contentsline {subsubsection}{\numberline {7.1.1}Coding redundancy}{15}
 \contentsline {subsubsection}{\numberline {7.1.2}Spatial and temporal redundancy}{15}
-\contentsline {subsubsection}{\numberline {7.1.3}Irrelevant information}{15}
-\contentsline {subsection}{\numberline {7.2}Huffman coding}{15}
-\contentsline {subsection}{\numberline {7.3}Run-length coding}{15}
+\contentsline {subsubsection}{\numberline {7.1.3}Irrelevant information}{16}
+\contentsline {subsection}{\numberline {7.2}Huffman coding}{16}
+\contentsline {subsection}{\numberline {7.3}Run-length coding}{16}
 \contentsline {section}{\numberline {8}Old exams}{16}
 \contentsline {subsection}{\numberline {8.1}2014/2013}{16}
-\contentsline {subsection}{\numberline {8.2}2012/2013}{17}
+\contentsline {subsection}{\numberline {8.2}2012/2013}{18}
 \contentsline {subsection}{\numberline {8.3}2011/2012}{18}
 \contentsline {subsection}{\numberline {8.4}2010/2011}{19}
-\contentsline {subsection}{\numberline {8.5}2009/2010}{19}
+\contentsline {subsection}{\numberline {8.5}2009/2010}{20}
