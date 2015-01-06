@@ -1,14 +1,29 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath}
+\usepackage{hyperref}
 \usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[table,xcdraw]{xcolor}
+   \newenvironment{dedication}
+        {\vspace*{6ex}\begin{quotation}\begin{center}\begin{em}}
+        {\par\end{em}\end{center}\end{quotation}}
 
-\title{Image processing: A quick reference sheet for the exam}
-\author{by Tom T. Doodle}
+\usepackage{epigraph}
+
+
+\title{\textbf{Image processing RRY025}\\ \textit{A quick reference sheet for the exam and not-so-thorough explanations
+of areas not studied by the lazy engineering master student}}
+\author{by Various Artists}
 
 \begin{document}
 \maketitle
+\epigraph{In theory there is no difference between theory and practice. In practice there is.}{\textit{Yogi Berra}}
+\newpage
+\begin{dedication}
+\hspace{4cm}
+\vspace*{9cm}{This paper is dedicated to nobody.}
+\end{dedication}
 \newpage
 \tableofcontents
 \newpage
@@ -27,9 +42,12 @@
 		\item[[E]] Exam
 		\item[[B]] Course Book
 		\item[[O]] Other
+		\item[[P03]] Paper: Romeo et al. (2003)
+        \item[[P04]] Paper: Romeo et al. (2004) 
 		\item[None] Missing or anecdotal
 	\end{description}
-	
+    	
+\newpage
 %	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -73,9 +91,65 @@
 	[W] Gaussian noise is statistical noise having a probability density function (PDF) equal to 
 	that of the normal distribution, which is also known as the Gaussian distribution. In other
 	words, the values that the noise can take on are Gaussian-distributed.
+
+	\begin{figure}[h]
+		\begin{equation}
+			p(z) = \frac{1}{\sqrt{2 \pi \sigma} }   e^{-(z - \overline{z}) / 2 \sigma^2 }
+		\end{equation}
+		$z$ represents the instensity \\
+		$\overline{z}$ is the \textit{mean}(avrage) \\
+		$\sigma$ is \textit{standard diviation} \\
+		$\sigma ^2$ is called \textit{variance} \\
+		approx $70\%$ of noise in range $[\overline{z} - \sigma, \overline{z} + \sigma]$ \\
+		approx $95\%$ of noise in range $[\overline{z} - 2\sigma, \overline{z} + 2\sigma]$ \\
+		\caption{pdf of Guassian noise, [B]	page 336}
+		\label{GuassianPDF}
+	\end{figure}
+	
+	\subsubsection{Rayleigh noise}
+	Shape of the probability distrubution is slightly skewed to the right. Usefull for approximate skewed histograms.
+
+	\begin{figure}[h!]
+		PDF is given by:
+		\begin{equation}
+			p(z) = \left\{ 
+			  \begin{array}{l l}
+			    \frac{2}{b}(z - a)e^{(z-a)^2 /b} & \quad \text{for $z \geq a$} \\
+			    0 & \quad \text{for $z < a$} 
+			  \end{array} \right.
+		\end{equation}
+		Mean and variance are given by
+		\begin{equation}
+			\overline{z} = a + \sqrt{\pi b/4}
+		\end{equation}
+		$z$ represents the instensity \\
+		\caption{pdf of Rayleigh noise noise, [B]	page 336}
+		\label{RayleighPDF}
+	\end{figure}
 	
 	\subsubsection{Poissonian noise}
-	TODO
+	[W] Shot noise or Poisson noise is a type of electronic noise which originates from the 
+	discrete nature of electric charge. The term also applies to photon counting in optical 
+	devices, where shot noise is associated with the particle nature of light.\\
+	\\
+	For large numbers the Poisson distribution approaches a normal distribution, typically 
+	making shot noise in actual observations indistinguishable from \emph{true Gaussian noise} 
+	except when the elementary events (photons, electrons, etc.) are so few that they are 
+	individually observed. Since the standard deviation of shot noise is equal to the square 
+	root of the average number of events $N$, the \emph{signal-to-noise} ratio (SNR) is given by:
+    $$
+    \mathrm{SNR} = \frac{N}{\sqrt{N}} = \sqrt{N}
+    $$
+    Thus when $N$ is very large, the signal-to-noise ratio is very large as well, and any 
+    \emph{relative} fluctuations in $N$ due to other sources are more likely to dominate over 
+    shot noise. However when the other noise source is at a fixed level, such as thermal noise, 
+    increasing $N$ (the DC current or light level, etc.) can sometimes lead to dominance of 
+    shot noise nonetheless.
+    
+    \textbf{not additive.} \\
+	\textbf{corraleted with the image.} \\
+	
+	Note: A \textit{poissonian distrubution} is like a Guassian distrubution when the mean is low, $\mu < 10$.
 	
 	\subsubsection{Additive}
     
@@ -84,8 +158,16 @@
 	\subsubsection{Multiplicative}
 	In signal processing, the term multiplicative noise refers to an unwanted random signal that 
 	gets multiplied into some relevant signal during capture, transmission, or other processing.
+	Taking $\log{f{z} + \epsilon}$ makes \textit{multiplicativ} noise \textit{additive}
+	Obs, when taking $\log$ of an image, the \textit{flux} is not conserved. It can be conserved if \textit{flux} is calculated in original first, then
+	
 	\subsubsection{Exponential}
-	TODO
+    The $a$ parameters controls the ammount of spread. Higher thevalue faster the function falls to zero     from the maximum. As in the case on page 316 the PDF of output image is obtained by convolution of input image     and uniform noise PDF.
+	
+	\subsubsection{Speckle noise}
+	Uniform, multiplicative noise.
+	Uncorralated to the image. Can be removed by \textit{Wiener filtering} since it can be made \textit{additive} by using the logarithm and it's uncoralated with the image.
+
 	
 	\subsection{Colors of noise}
 	\subsubsection{White noise}
@@ -98,6 +180,10 @@
 	\subsubsection{Blue noise}
 	[W] In computer graphics, the term "blue noise" is sometimes used more loosely as any noise with 
 	minimal low frequency components and no concentrated spikes in energy. This can be good noise for dithering.
+	
+	\subsubsection{Gamma (Erlang-noise)}
+	Book page: 315-316
+	
 %	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	
@@ -148,6 +234,11 @@
 	\end{itemize}
 	Both of these problems are tackled by the median filter, which is often a better filter 
 	for reducing noise than the mean filter, but it takes longer to compute. 
+
+    \subsection{Wiener-filter (Minimum-mean-square-error filter)}
+    Wiener filter is founded on considering images and noise as random variables.
+    The objective is to find an estimate, e, of the uncorrupt image, i, such that the means square error between them is minimized. 
+    
 %	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	
@@ -281,6 +372,20 @@
 %	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	
+\section{Transform Functions}
+\subsection{Basics}
+A transform function, $t = f(\pi)$, transforms an input grey level $\pi$ into an output grey level t, for each pixel of the image.
+\subsection{Types of transfer functions}
+\begin{itemize}
+\item Logarithmic: $t=log(1+\pi)$
+\item Power-Law: $t=\pi^v$
+\item Clipping: if $\pi \geq \pi_0$ then 1 else 0
+\item Contrast strutching:
+\end{itemize}
+
+%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	
 \section{Wavelets}
 	\subsection{The fundamental Propertis of Wavelets}
 	Wavelets are a multiscale method that can overcome some the difficulties with the Fourier Transform. Their fundamental
@@ -293,6 +398,40 @@
 	 
 	 \subsection{Basics of Wavelet Applications}
 	 Wavelets can be used for alot of things. Some common use-areas are:
+	 
+	 \subsubsection{Wavelet properties}
+    [P04]
+    \textit{Size of support} The support of a wavelet is the interval where the
+    wavelet is non-zero. Its size determines not only the time/space localization 
+    of the wavelet, but also the speed of the transform.\\
+    \\
+    \textit{Symmetry} also influences the quality of time/space localization. 
+    For example, an asymmetric wavelet can be regarded as giving a location with 
+    asymmetric error bars.\\
+    \\
+    \textit{Number of vanishing moments} A wavelet $\psi(x)$ has $n$ vanishing 
+    moments when
+    \begin{equation}
+        \int_{-\infty}^\infty x^\upsilon \psi(x)dx=0, \mathrm{for }\;\upsilon = 0,1, \dots , n −1
+    \end{equation}
+    where x denotes time or space. In particular, all ‘normal’ wavelets have zero
+    mean (n = 1) since, under rather general assumptions, this is related to the
+    admissibility condition for the existence of the inverse transform. The number 
+    of vanishing moments affects the frequency localization. In fact, the Fourier 
+    transform of a wavelet with n vanishing moments peaks at a characteristic 
+    frequency and decays as kn towards the origin, where k denotes frequency.\\
+    \\
+    \textit{Regularity} also affects the frequency localization. In fact, the 
+    Fourier transform of a wavelet that is continuous together with its first 
+    n − 1 derivatives decays as k−(n+1) towards infinity.\\
+    \\
+    \textit{(Bi-)Orthogonality} The orthogonality property concerns the set of 
+    wavelets defining the transform, that is the set of scaled and trans- lated 
+    versions of the basic wavelet. This means that such wavelets form an 
+    orthogonal basis. The alternative bi-orthogonality property means that the
+    decomposition and reconstruction wavelets form two distinct bases, which 
+    are mutually orthogonal. Note that (bi-)orthogonality is intimately related
+    to the non-redundancy of the transform.
 	    
 	    \subsubsection{Data Compression}
 	    The adaptive time/space-frequency resolution and the non-redundancy of the fast wavelet transform have an iumportant implication: 
@@ -369,11 +508,210 @@
         12W1B12W3B24W1B14W
     \end{verbatim}
         This is to be interpreted as twelve Ws, one B, twelve Ws, three Bs, etc.
-        The run-length code represents the original 67 bit-values in only 18.    
+        The run-length code represents the original 67 bit-values in only 18.
+        RLE is loss-less.
+        %
+    \subsection{Description of lossy compression}
+    [W] In information technology, "lossy" compression is the class of data encoding 
+    methods that uses inexact approximations (or partial data discarding) for 
+    representing the content that has been encoded. Such compression techniques are 
+    used to reduce the amount of data that would otherwise be needed to store, handle,
+    and/or transmit the represented content. The different versions of the photo of 
+    the cat at the right demonstrate how the approximation of an image becomes 
+    progressively coarser as more details of the data that made up the original 
+    image are removed. The amount of data reduction possible using lossy compression can 
+    often be much more substantial than what is possible with lossless data compression
+    techniques.\\
+    \\
+    Using well-designed lossy compression technology, a substantial amount of data 
+    reduction is often possible before the result is sufficiently degraded to be noticed 
+    by the user. Even when the degree of degradation becomes noticeable, further data reduction 
+    may often be desirable for some applications (e.g., to make real-time communication 
+    possible through a limited bit-rate channel, to reduce the time needed to transmit the 
+    content, or to reduce the necessary storage capacity).
+    \subsection{Discrete Cosine transform}
+    [W] The DCT, and in particular the DCT-II, is often used in signal and image processing, especially
+    for lossy data compression, because it has a strong "energy compaction" property: most of the 
+    signal information tends to be concentrated in a few low-frequency components of the DCT, 
+    approaching the Karhunen-Loève transform (which is optimal in the decorrelation sense) for signals 
+    based on certain limits of Markov processes. As explained below, this stems from the boundary 
+    conditions implicit in the cosine functions.
+    \begin{figure}[h!]
+    \begin{align}
+        X_{k_1,k_2} &=&
+        \sum_{n_1=0}^{N_1-1}
+        \left( \sum_{n_2=0}^{N_2-1}
+        x_{n_1,n_2} 
+        \cos \left[\frac{\pi}{N_2} \left(n_2+\frac{1}{2}\right) k_2 \right]\right)
+        \cos \left[\frac{\pi}{N_1} \left(n_1+\frac{1}{2}\right) k_1 \right]\\ &=&
+        \sum_{n_1=0}^{N_1-1}
+        \sum_{n_2=0}^{N_2-1}
+        x_{n_1,n_2} 
+        \cos \left[\frac{\pi}{N_1} \left(n_1+\frac{1}{2}\right) k_1 \right]
+        \cos \left[\frac{\pi}{N_2} \left(n_2+\frac{1}{2}\right) k_2 \right] .
+    \end{align}
+    \caption{Multi-dimensional discrete cosine transform}
+    \end{figure}
+    
+    \subsection{Compression of JPEG}
+    [W] JPEG uses a lossy form of compression based on the discrete cosine 
+    transform (DCT). This mathematical operation converts each frame/field 
+    of the video source from the spatial (2D) domain into the frequency 
+    domain (aka transform domain.) A perceptual model based loosely on the 
+    human psychovisual system discards high-frequency information, i.e. 
+    sharp transitions in intensity, and color hue. \\
+    \\
+    In the transform domain, 
+    the process of reducing information is called quantization. In simpler 
+    terms, quantization is a method for optimally reducing a large number 
+    scale (with different occurrences of each number) into a smaller one, 
+    and the transform-domain is a convenient representation of the image 
+    because the high-frequency coefficients, which contribute less to the 
+    overall picture than other coefficients, are characteristically small-
+    values with high compressibility.\\
+    \\
+    The quantized coefficients are then 
+    sequenced and losslessly packed into the output bitstream. Nearly all 
+    software implementations of JPEG permit user control over the 
+    compression-ratio (as well as other optional parameters), allowing the 
+    user to trade off picture-quality for smaller file size. In embedded 
+    applications (such as miniDV, which uses a similar DCT-compression 
+    scheme), the parameters are pre-selected and fixed for the application.
 %	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	
+\section{Usefull formulas}
+    \subsection{statistics}
+        \subsubsection*{Mean, $\overline{X}$ or $\mu$}
+            \begin{figure}
+\[ \overline{X} = \frac{\sum{X}}{N} \]
+\caption{$X$ : all samples, $N$ : number of samples}
+\end{figure}
+            \
+            
+            For random variables the mean is the \textit{expected value}.
+            \begin{figure}
+\[ E[X] = \sum^{\infty}_{i=1{x_ip_i}} \]
+\caption{$E[X]$ : ezpected value, $x_i$ : a event $i$, $p_i$ : probability of event $x_i$}
+\end{figure}
+        \subsubsection*{Variance, $\sigma^2$}    
+         
+         
+
+        [w]In probability theory and statistics, variance measures how far a set of numbers is spread out. A variance of zero indicates that all the values are identical. Variance is always non-negative: a small variance indicates that the data points tend to be very close to the mean (expected value) and hence to each other, while a high variance indicates that the data points are very spread out around the mean and from each other.
+        
+    \subsection{Histograms}
+    
+    \subsection{Flux}
+        flux = intensity\\
+        $\mu = \frac{\text{flux}}{\text{img size}}$
+    
 \section{Old exams}
+    \subsection*{2014-10-30}
+    \subsubsection*{1a)}
+        Most important assumptions for Wiener filtering is: 
+    \begin{itemize}
+        \item{1: the noise is additive.}
+        \item{3: the noise is uncorrelated with the signal.}
+    \end{itemize}
+    
+    \subsubsection*{1b)}
+        Answer is in lecturenotes \textit{Image restorations 2}
+        obs: $H = 1$, since no distortions\\
+    
+    \subsubsection*{1c)}
+        Referring to:
+        $G = F + N$, thus noise needs to be additivit.
+        Also for wiener filter the powerspectrum of G must be as: \\    
+        $<|G^2|> = |F^2| + <|N^2|> + <FN^*> + <F^*N>$
+    If noise is corralated with the signal then:\\
+    $F \bigstar N \neq FN$ \\
+
+    \subsubsection*{1d)}
+        Speckle noise: uniform, multiplicative, noise.\\
+        Make noise additive by taking the logarithm of the image. Afterwards it's possible to do the noise reduction since the noise is uncorraleted with the image.\\ 
+        \textbf{Obs}: introduce a bias $\epsilon$ when taking logarithm, since $\log{0}$ is not defined.\\
+        \textbf{Obs}: Logarithm-function is not linear, that means that the total \textit{Flux} is not conserved. It can be adjusted by calculating the total \textit{flux} before the logarithmic operation, and in the post-processing step(when the exponential-function is run). Divide the \textit{flux} by total amount of pixels in the image to calculate the mean. This is the bias. Subtract the bias from the wienerfiltered image. Otherwise the resulting image contains errors. (OBs, this is taken from my notes, Im not sure this is the correct way of calculating the bias).
+        
+        \subsubsection*{1e)}
+        Poissionian: not additiv, correlated with the image.
+        \\
+        Both assumptions are violated.
+        There is a transformation, the Anscombe Transformation, that can be applied to the image, wich makes the poissionian noise to an approximately signal-independent Gaussian additive noise. Which can be wiener filtered. 
+    \subsubsection*{1f)}
+    Salt-And-Pepper: not additive \\
+    no transformation to becom additive \\
+    Cant use wiener filter.
+    
+    \textbf{super-poissonin-noise is a wrong answer}. Since super-poissonin-noise only appear in the power spectrum, not in the spatial domaine.
+        
+    \subsubsection*{2a)}
+    Given two versions of same image \textit{I1} with sample size 16x16 pixels and \textit{I2} with sample size 1024 x 1024 pixels. We can precompress \textit{I2} more since we can traverse more levels using a wavelet. A wavelet stops when the whole image is in the spectra.\\ 
+    ex:\\
+    \begin{itemize}
+    \item level 1: wavelet size
+    \item level 2: $2 \cdot$ level 1
+    \item level 3: $2 \cdot$ level 2
+    \item ...
+    \end{itemize}
+    
+    The more levels that can be traversed, more sigingicant data can be concentrated into large wavelet coefficients, which means more unneccesary coefficients can be set to zero. Thus a larger sample size gives a better pre comression.
+    
+    \subsubsection*{2b)}
+    Given from question: \\
+    Using wavelet \textit{bior4.4} \\
+    support size: 12px \\
+    significant difference: 3px\\
+    Image size, \textit{I1}: 16x16\\
+    Image size, \textit{I2}: 1024x1024\\
+    
+    First choose wich level,$\ell$, to stop at using function:\\
+    $2^{\ell-1} \cdot \text{wavelet-size} \approx \text{image size, in min dimension}$
+    
+    For \textit{I1}\\
+    $2^{1-1}\cdot 12 \approx 16 \rightarrow \ell = 1 \text{for \textit{I1}}$\\
+    For \textit{I2}\\
+    $2^{7-1}\cdot 12 = 64 \cdot 12 \approx 1024 \rightarrow \ell = 7 \text{for \textit{I2}}$
+        
+    The difference betwen wavelets coeficiance is: $\frac{2^7}{2^1} = 2^6 = N_a$\\
+    
+    upperlimit :=$ N^2/N_a $\\
+    upperlimit \textit{I1} :=$ 16^2/ 2^6 = 2^2$\\
+    upperlimit \textit{I1} :=$ 1024^2/ 2^6 = 128^2$\\
+     
+     
+     Since wavelet only is significant, wich means theese $3px$ will have the most inpact on the compression. We can use $3px$ as wavelet-size instead of $12px$, and redo the calculations.
+     wich gives us: \\
+     $\ell = 3 \text{for \textit{I1}}$ \\
+     $\ell = 9 \text{for \textit{I2}}$ \\
+     
+     Wich yield a $N_a=2^2$
+     
+     OBS: IM NOT SURE THIS ANSWEAR IS RIGHT!!!!!!
+     
+     \subsubsection*{2c)}
+     Given:\\
+     Img size: $128 \times 128$ px\\
+     color: $8$-bit\\
+     Distrubution: Guassian\\
+     $\sigma= 16$\\
+     $\mu= 64$\\
+     
+     \begin{itemize}
+    \item 8-bit $\rightarrow 255$ Distinct gray-Values
+    \item $\mu < 127 \rightarrow$ Image is dark, since most values are distrubuted in the darker part of the histogram. 
+    \item $\sigma << 255 \rightarrow $ values are close to eachother, thus low contrast
+    \end{itemize}
+    
+    The flux is define as the total intensity of the image. And mean is defined as total intensity over all pixels. Thus:
+    
+    flux = intensity\\
+    $\mu = \frac{\text{flux}}{\text{img size}} \rightarrow $\\
+    flux = $128^2 \cdot 64$
+    
+    \subsubsection*{2d)}
+    Since the $\sigma$ is $< 10$. The \textit{poissonan distrubution} can be treated as a \textit{guassian distrubution}. Same calculations used in assignment 2c can be applied but with the new given values.
+    
 	\subsection{2014/2013}
 	\subsubsection*{1a)}
 	
